@@ -92,7 +92,7 @@ spec:
       {{- if .Values.agent.persistentVolume.config.enabled }}
       - name: crowdsec-agent-config
         persistentVolumeClaim:
-          claimName: {{ .Values.agent.persistentVolume.config.existingClaim | default printf "%s-%s" .Release.Name "agent-config-pvc" }}
+          claimName: {{- .Values.agent.persistentVolume.config.existingClaim | default .Release.Name "agent-config-pvc" -}}
       {{- end }}
       - name: varlibdockercontainers
         hostPath:
