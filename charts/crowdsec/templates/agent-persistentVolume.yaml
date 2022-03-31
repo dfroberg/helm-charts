@@ -1,4 +1,4 @@
-{{ if default .Values.agent.persistentVolume.config.enabled true (not .Values.agent.persistentVolume.config.existingClaim) }}
+{{ if .Values.agent.persistentVolume.config.enabled (not .Values.agent.persistentVolume.config.existingClaim) }}
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
