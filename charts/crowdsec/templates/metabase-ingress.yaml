@@ -8,8 +8,8 @@ metadata:
     meta.helm.sh/release-name: {{ .Release.Name }}
     meta.helm.sh/release-namespace: {{ .Release.Namespace }}
     {{- toYaml .Values.lapi.dashboard.ingress.annotations | nindent 4 }}
-  labels:    
-    {{- if .Values.lapi.dashboard.ingress.labels }}    
+  labels:
+    {{- if .Values.lapi.dashboard.ingress.labels }}
     {{- toYaml .Values.lapi.dashboard.ingress.labels | nindent 4 }}
     {{- else }}
     k8s-app: {{ .Release.Name }}
@@ -28,7 +28,7 @@ spec:
               service:
                 name: {{ .Release.Name }}-service
                 port:
-                  number: 3000    
+                  number: 3000
   {{- if .Values.lapi.dashboard.ingress.tls }}
   tls:
     {{- tpl (toYaml .Values.lapi.dashboard.ingress.tls | nindent 4) . }}
