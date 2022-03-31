@@ -2,6 +2,10 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: acquis-configmap
+  namespace: {{ .Release.Namespace }}
+  annotations:
+    meta.helm.sh/release-name: {{ .Release.Name }}
+    meta.helm.sh/release-namespace: {{ .Release.Namespace }}
 data:
   acquis.yaml: |-
     {{- $valid := required "You need to specify at least one pod for logs read" .Values.agent.acquisition }}

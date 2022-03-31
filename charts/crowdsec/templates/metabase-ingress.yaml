@@ -2,9 +2,12 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  annotations:
-    {{- toYaml .Values.lapi.dashboard.ingress.annotations | nindent 4 }}
   name: {{ .Release.Namespace }}-dashboard
+  namespace: {{ .Release.Namespace }}
+  annotations:
+    meta.helm.sh/release-name: {{ .Release.Name }}
+    meta.helm.sh/release-namespace: {{ .Release.Namespace }}
+    {{- toYaml .Values.lapi.dashboard.ingress.annotations | nindent 4 }}
   labels:    
     {{- if .Values.lapi.dashboard.ingress.labels }}    
     {{- toYaml .Values.lapi.dashboard.ingress.labels | nindent 4 }}

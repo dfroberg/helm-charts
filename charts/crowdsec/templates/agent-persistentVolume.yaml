@@ -3,8 +3,11 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: {{ .Release.Name }}-agent-config-pvc
-  {{- if .Values.agent.persistentVolume.config.annotations }}
+  namespace: {{ .Release.Namespace }}
   annotations:
+    meta.helm.sh/release-name: {{ .Release.Name }}
+    meta.helm.sh/release-namespace: {{ .Release.Namespace }}
+  {{- if .Values.agent.persistentVolume.config.annotations }}
 {{ toYaml .Values.agent.persistentVolume.config.annotations | indent 4 }}
   {{- end }}
   labels:

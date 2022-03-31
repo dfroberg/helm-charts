@@ -3,8 +3,11 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: {{ .Release.Name }}-db-pvc
-  {{- if .Values.lapi.persistentVolume.data.annotations }}
+  namespace: {{ .Release.Namespace }}
   annotations:
+    meta.helm.sh/release-name: {{ .Release.Name }}
+    meta.helm.sh/release-namespace: {{ .Release.Namespace }}
+  {{- if .Values.lapi.persistentVolume.data.annotations }}
 {{ toYaml .Values.lapi.persistentVolume.data.annotations | indent 4 }}
   {{- end }}
   labels:
@@ -31,8 +34,11 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: {{ .Release.Name }}-config-pvc
-  {{- if .Values.lapi.persistentVolume.config.annotations }}
+  namespace: {{ .Release.Namespace }}
   annotations:
+    meta.helm.sh/release-name: {{ .Release.Name }}
+    meta.helm.sh/release-namespace: {{ .Release.Namespace }}
+  {{- if .Values.lapi.persistentVolume.config.annotations }}
 {{ toYaml .Values.lapi.persistentVolume.config.annotations | indent 4 }}
   {{- end }}
   labels:
