@@ -16,7 +16,7 @@ jobs:
       - uses: actions/checkout@master
         with:
           fetch-depth: 0
-      
+
       - name: Set up Helm
         uses: azure/setup-helm@v1
         with:
