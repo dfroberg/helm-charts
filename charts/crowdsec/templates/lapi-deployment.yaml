@@ -101,7 +101,11 @@ spec:
       {{- if .Values.lapi.persistentVolume.data.enabled }}
       - name: crowdsec-db
         persistentVolumeClaim:
-          claimName: {{- .Values.lapi.persistentVolume.data.existingClaim | default .Release.Name "db-pvc" -}}
+        {{- if .Values.lapi.persistentVolume.data.existingClaim }}
+          claimName: {{- .Values.lapi.persistentVolume.data.existingClaim -}}
+        {{- else }}
+          claimName: {{- .Release.Name }}-db-pvc
+        {{- end }}
       {{- else if .Values.lapi.dashboard.enabled }}
       - name: crowdsec-db
         emptyDir: {}
@@ -109,7 +113,11 @@ spec:
       {{- if .Values.lapi.persistentVolume.config.enabled }}
       - name: crowdsec-config
         persistentVolumeClaim:
-          claimName: {{- .Values.lapi.persistentVolume.config.existingClaim | default .Release.Name "config-pvc" -}}
+        {{- if .Values.lapi.persistentVolume.config.existingClaim }}
+          claimName: {{- .Values.lapi.persistentVolume.config.existingClaim -}}
+        {{- else }}
+          claimName: {{- .Release.Name }}-config-pvc
+        {{- end }}
       {{- end }}
       {{- end }}
       {{- with .Values.lapi.tolerations }}
