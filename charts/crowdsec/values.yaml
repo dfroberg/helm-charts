@@ -63,6 +63,7 @@ lapi:
     # -- Persistent volume for data folder. Stores e.g. registered bouncer api keys
     data:
       enabled: true
+      # existingClaim: crowdsec-db-pvc
       accessModes:
         - ReadWriteOnce
       storageClassName: ""
@@ -70,6 +71,7 @@ lapi:
     # -- Persistent volume for config folder. Stores e.g. online api credentials
     config:
       enabled: true
+      # existingClaim: crowdsec-config-pvc
       accessModes:
         - ReadWriteOnce
       storageClassName: ""
@@ -113,6 +115,7 @@ agent:
     # -- Persistent volume for config folder. Stores local config (parsers, scenarios etc.)
     config:
       enabled: true
+      # existingClaim: crowdsec-agent-config-pvc
       accessModes:
         - ReadWriteOnce
       storageClassName: ""
