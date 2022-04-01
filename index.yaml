@@ -3,6 +3,27 @@ entries:
   crowdsec:
   - apiVersion: v2
     appVersion: v1.3.2
+    created: "2022-04-01T07:41:57.873950491Z"
+    description: 'Crowdsec helm chart is an open-source, lightweight agent to detect
+      and respond to bad behaviours.  ## Get Repo Info  ``` # Install original. helm
+      repo add crowdsec https://crowdsecurity.github.io/helm-charts # Install this
+      modified Chart. helm repo add crowdsec https://dfroberg.github.io/helm-charts
+      helm repo update ```  ## Installing the Chart  Before installing the chart,
+      you need to understand some [concepts](https://docs.crowdsec.net/docs/concepts)
+      of Crowdsec. So you can configure well the chart and being able to parse logs
+      and detect attacks inside your Kubernetes cluster.  Here is a [blog post](https://crowdsec.net/blog/kubernetes-crowdsec-integration/)
+      about crowdsec in kubernetes.  ``` # Create namespace for crowdsec kubectl create
+      ns crowdsec # Install helm chart with proper values.yaml config helm install
+      crowdsec crowdsec/crowdsec -f crowdsec-values.yaml -n crowdsec ```  ## Uninstalling
+      the Chart  ``` helm delete crowdsec -n crowdsec ``` '
+    digest: 4e45449a3f4d0e8841bf01a46110e1bda477d0a02b396173bd8d65e2a6f8b136
+    name: crowdsec
+    type: application
+    urls:
+    - https://github.com/dfroberg/helm-charts/releases/download/crowdsec-0.3.16/crowdsec-0.3.16.tgz
+    version: 0.3.16
+  - apiVersion: v2
+    appVersion: v1.3.2
     created: "2022-04-01T07:37:58.160323151Z"
     description: 'Crowdsec helm chart is an open-source, lightweight agent to detect
       and respond to bad behaviours.  ## Get Repo Info  ``` # Install original. helm
@@ -293,4 +314,4 @@ entries:
     urls:
     - https://github.com/dfroberg/helm-charts/releases/download/crowdsec-0.3.1/crowdsec-0.3.1.tgz
     version: 0.3.1
-generated: "2022-04-01T07:37:58.160440651Z"
+generated: "2022-04-01T07:41:57.874355294Z"
