@@ -101,31 +101,31 @@ spec:
         {{- toYaml . | nindent 8 }}
       {{- end }}
       {{- if .Values.agent.persistentVolume.config.enabled }}
-      volumeClaimTemplates:
-      - metadata:
-          name: {{ .Release.Name }}-agent-config-pvc
-          namespace: {{ .Release.Namespace }}
-          annotations:
-            meta.helm.sh/release-name: {{ .Release.Name }}
-            meta.helm.sh/release-namespace: {{ .Release.Namespace }}
-          {{- if .Values.agent.persistentVolume.config.annotations }}
-{{ toYaml .Values.agent.persistentVolume.config.annotations | indent 12 }}
-          {{- end }}
-          labels:
-            k8s-app: {{ .Release.Name }}
-            type: agent
-            version: v1
-        spec:
-          accessModes:
-{{ toYaml .Values.agent.persistentVolume.config.accessModes | indent 12 }}
-          {{- if .Values.agent.persistentVolume.config.storageClassName }}
-          {{- if (eq "-" .Values.agent.persistentVolume.config.storageClassName) }}
-          storageClassName: ""
-          {{- else }}
-          storageClassName: "{{ .Values.agent.persistentVolume.config.storageClassName }}"
-          {{- end }}
-          {{- end }}
+  volumeClaimTemplates:
+  - metadata:
+      name: {{ .Release.Name }}-agent-config-pvc
+      namespace: {{ .Release.Namespace }}
+      annotations:
+        meta.helm.sh/release-name: {{ .Release.Name }}
+        meta.helm.sh/release-namespace: {{ .Release.Namespace }}
+      {{- if .Values.agent.persistentVolume.config.annotations }}
+{{ toYaml .Values.agent.persistentVolume.config.annotations | indent 8 }}
       {{- end }}
-          resources:
-            requests:
-              storage: "{{ .Values.agent.persistentVolume.config.size }}"
+      labels:
+        k8s-app: {{ .Release.Name }}
+        type: agent
+        version: v1
+    spec:
+      accessModes:
+{{ toYaml .Values.agent.persistentVolume.config.accessModes | indent 8 }}
+      {{- if .Values.agent.persistentVolume.config.storageClassName }}
+      {{- if (eq "-" .Values.agent.persistentVolume.config.storageClassName) }}
+      storageClassName: ""
+      {{- else }}
+      storageClassName: "{{ .Values.agent.persistentVolume.config.storageClassName }}"
+      {{- end }}
+      {{- end }}
+  {{- end }}
+      resources:
+        requests:
+          storage: "{{ .Values.agent.persistentVolume.config.size }}"
