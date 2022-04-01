@@ -109,7 +109,7 @@ spec:
             meta.helm.sh/release-name: {{ .Release.Name }}
             meta.helm.sh/release-namespace: {{ .Release.Namespace }}
           {{- if .Values.agent.persistentVolume.config.annotations }}
-{{ toYaml .Values.agent.persistentVolume.config.annotations | indent 8 }}
+{{ toYaml .Values.agent.persistentVolume.config.annotations | indent 12 }}
           {{- end }}
           labels:
             k8s-app: {{ .Release.Name }}
@@ -117,7 +117,7 @@ spec:
             version: v1
         spec:
           accessModes:
-{{ toYaml .Values.agent.persistentVolume.config.accessModes | indent 8 }}
+{{ toYaml .Values.agent.persistentVolume.config.accessModes | indent 12 }}
           {{- if .Values.agent.persistentVolume.config.storageClassName }}
           {{- if (eq "-" .Values.agent.persistentVolume.config.storageClassName) }}
           storageClassName: ""
