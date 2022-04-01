@@ -12,7 +12,7 @@ metadata:
     version: v1
 spec:
   serviceName: {{ .Release.Name }}-agent
-  replicas: {{- .Values.agent.replicas }}
+  replicas: {{ .Values.agent.replicas }}
   selector:
     matchLabels:
       k8s-app: {{ .Release.Name }}
