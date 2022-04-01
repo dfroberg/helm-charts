@@ -97,6 +97,7 @@ lapi:
 
 # agent will deploy pod on every node as daemonSet to read wanted pods logs
 agent:
+  replicas: 4 # number of nodes
   acquisition:
     # -- Specify each pod you want to process it logs (namespace, podName and program)
     - namespace: ingress-nginx
